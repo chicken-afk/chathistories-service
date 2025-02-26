@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"encoding/json"
@@ -16,7 +17,7 @@ func failOnError(err error, msg string) {
 	}
 }
 
-var rabbitHost = "amqp://user:password@localhost:5672/"
+var rabbitHost = os.Getenv("RABITMQ_HOST")
 
 func rabbitMqConnect() {
 	conn, err := amqp.Dial(rabbitHost)

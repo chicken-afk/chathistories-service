@@ -3,6 +3,7 @@ module chatroom-chat-histories
 go 1.21.4
 
 require (
+	github.com/joho/godotenv v1.5.1
 	github.com/olivere/elastic/v7 v7.0.32
 	github.com/streadway/amqp v1.1.0
 )

@@ -1,26 +1,23 @@
 package main
 
-var elasticHost = "http://localhost:9200"
-var elasticUsername = "elastic"
-var elasticPassword = "yourpassword"
+import (
+	"log"
+	"os"
+
+	"github.com/joho/godotenv"
+)
+
+var elasticHost = os.Getenv("ELASTIC_HOST")
+var elasticUsername = os.Getenv("ELASTIC_USERNAME")
+var elasticPassword = os.Getenv("ELASTIC_PASSWORD")
 
 func main() {
-	// client, err := connectElasticSearch(elasticHost, elasticUsername, elasticPassword)
-	// if err != nil {
-	// 	log.Fatalf("Failed to connect to Elasticsearch: %v", err)
-	// }
-
-	// message := ChatMessage{
-	// 	Email:     "user2@example.com",
-	// 	CreatedAt: time.Now(),
-	// 	Message:   "Hallo jugaa!",
-	// }
-
-	// err = storeChatMessage(client, "room1", message)
-	// if err != nil {
-	// 	log.Fatalf("Failed to store chat message: %v", err)
-	// }
-
 	// log.Println("Chat message stored successfully")
+	//initiate godotenv
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+	// connect to rabbitmq
 	rabbitMqConnect()
 }
