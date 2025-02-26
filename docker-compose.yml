@@ -3,8 +3,6 @@ services:
   go-app:
     build: .
     container_name: chat-histories-service
-    ports:
-      - "80:80"
     volumes:
       - .:/app
     working_dir: /app
