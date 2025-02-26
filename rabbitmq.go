@@ -17,9 +17,10 @@ func failOnError(err error, msg string) {
 	}
 }
 
-var rabbitHost = os.Getenv("RABITMQ_HOST")
-
 func rabbitMqConnect() {
+	var rabbitHost = os.Getenv("RABITMQ_HOST")
+	fmt.Println("Connecting to RabbitMQ")
+	fmt.Println(rabbitHost)
 	conn, err := amqp.Dial(rabbitHost)
 	failOnError(err, "Failed to connect to RabbitMQ")
 	defer conn.Close()
@@ -70,6 +71,10 @@ func rabbitMqConnect() {
 			message.CreatedAt = message.CreatedAt.In(loc)
 
 			// Store message to elastic
+			fmt.Println("Storing message to elastic")
+			fmt.Println(elasticHost)
+			fmt.Println(elasticUsername)
+			fmt.Println(elasticPassword)
 			client, err := connectElasticSearch(elasticHost, elasticUsername, elasticPassword)
 			if err != nil {
 				log.Fatalf("Failed to connect to Elasticsearch: %v", err)
