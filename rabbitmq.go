@@ -18,6 +18,9 @@ func failOnError(err error, msg string) {
 }
 
 func rabbitMqConnect() {
+	var elasticHost = os.Getenv("ELASTIC_HOST")
+	var elasticUsername = os.Getenv("ELASTIC_USERNAME")
+	var elasticPassword = os.Getenv("ELASTIC_PASSWORD")
 	var rabbitHost = os.Getenv("RABITMQ_HOST")
 	fmt.Println("Connecting to RabbitMQ")
 	fmt.Println(rabbitHost)

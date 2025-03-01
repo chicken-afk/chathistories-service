@@ -2,14 +2,9 @@ package main
 
 import (
 	"log"
-	"os"
 
 	"github.com/joho/godotenv"
 )
-
-var elasticHost = os.Getenv("ELASTIC_HOST")
-var elasticUsername = os.Getenv("ELASTIC_USERNAME")
-var elasticPassword = os.Getenv("ELASTIC_PASSWORD")
 
 func main() {
 	// log.Println("Chat message stored successfully")
